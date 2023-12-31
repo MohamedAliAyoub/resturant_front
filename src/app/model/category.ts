@@ -1,0 +1,14 @@
+export class Category {
+  id : Number;
+  name : String;
+  date_create : Date;
+  date_update : Date;
+
+
+  constructor(id: Number, name: String, date_create: Date, date_update: Date) {
+    this.id = id;
+    this.name = name;
+    this.date_create = date_create;
+    this.date_update = date_update;
+  }
+}
