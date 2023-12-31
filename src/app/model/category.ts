@@ -4,7 +4,6 @@ export class Category {
   date_create : Date;
   date_update : Date;
 
-
   constructor(id: Number, name: String, date_create: Date, date_update: Date) {
     this.id = id;
     this.name = name;
