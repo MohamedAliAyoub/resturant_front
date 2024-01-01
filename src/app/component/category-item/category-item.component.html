@@ -1,8 +1,8 @@
 <ul>
-<!--  <li class="active"><a href="index.html"><i class="bx bx-home"></i> <span>Home</span></a></li>-->
+  <li class="active"><a href="index.html"><i class="bx bx-home"></i> <span>Home</span></a></li>
 
   <li *ngFor="let temp of categories">
-    <a href="#about"><i class="fas fa-utensils"></i> <span>{{temp.name}}</span></a>
+    <a href="#about"><i class="{{temp.logo}}"></i> <span>{{temp.name}}</span></a>
   </li>
 <!--  <li><a href="#resume"><i class="fas fa-cocktail"></i> <span>Cold Drinks</span></a></li>-->
 <!--  <li><a href="#portfolio"><i class="fas fa-coffee"></i> Hot Drinks</a></li>-->
