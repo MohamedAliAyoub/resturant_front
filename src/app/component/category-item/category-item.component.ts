@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {CategoryServiceService} from "../../service/category-service.service";
+import {Category} from "../../model/category";
 
 @Component({
   selector: 'app-category-item',
@@ -7,4 +9,20 @@ import { Component } from '@angular/core';
 })
 export class CategoryItemComponent {
 
+  categories: Category[] = []
+
+  constructor(private categoryService: CategoryServiceService) {
+  }
+
+  ngOnInit(): void {
+    this.getAllCategories();
+  }
+
+  getAllCategories() {
+    this.categoryService.getAllCategories().subscribe(
+      data => {
+        this.categories = data;
+      }
+    )
+  }
 }
