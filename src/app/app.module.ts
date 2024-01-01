@@ -1,11 +1,16 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { OrderItemsComponent } from './component/order-items/order-items.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {OrderItemsComponent} from './component/order-items/order-items.component';
 import {HttpClientModule} from "@angular/common/http";
-import { CategoryItemComponent } from './component/category-item/category-item.component';
+import {CategoryItemComponent} from './component/category-item/category-item.component';
+import {RouterModule, Routes} from "@angular/router";
+
+const routes: Routes = [
+  {path: "", component: OrderItemsComponent}
+]
 
 @NgModule({
   declarations: [
@@ -14,6 +19,7 @@ import { CategoryItemComponent } from './component/category-item/category-item.c
     CategoryItemComponent
   ],
   imports: [
+    RouterModule.forRoot(routes),
     BrowserModule,
     AppRoutingModule,
     HttpClientModule
@@ -21,4 +27,5 @@ import { CategoryItemComponent } from './component/category-item/category-item.c
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
