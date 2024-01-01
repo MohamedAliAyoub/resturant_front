@@ -1160,11 +1160,25 @@ section {
 }
 .order-item
 {
-  height: 720px;
+  height: 300px;
 }
 .card-button
 {
   position: absolute;
   bottom: 0;
   width: 270px;
+}
+img
+{
+  height: 220px;
+}
+.order-item {
+  height: 382px;
+}
+#hero h1 {
+  font-size: 23px;
+  font-family: revert;
+}
+.btn:not(:disabled):not(.disabled) {
+  margin: 0px 0px 0px 0px ;
 }
