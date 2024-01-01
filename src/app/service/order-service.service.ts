@@ -17,7 +17,7 @@ export class OrderServiceService {
     );
   }
 
-  getOrdersByCategoryId(id:bigint): Observable<Order[]> {
+  getOrdersByCategoryId(id:any): Observable<Order[]> {
     return this.http.get<Order[]>(`${this.baseUrl}category?id=${id}`).pipe(
       map(response => response),
     );
