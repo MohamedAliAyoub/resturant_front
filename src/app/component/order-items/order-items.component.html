@@ -2,7 +2,7 @@
   <div *ngFor="let temp of orders" class="col-md-4 myorder">
     <div class="card order-item">
       <img src="assets/img/{{temp.img}}" alt="Denim Jeans" style="width:100%">
-      <h1>{{temp.name}}</h1>
+      <h1>{{temp.id}}</h1>
           <p class="price">{{temp.price |currency : 'USD'}}</p>
       <button class="btn btn-primary card-button">Add to Cart</button>
     </div>
