@@ -12,6 +12,9 @@ import { SearchOrderComponent } from './component/search-order/search-order.comp
 import { OrderDetailsComponent } from './component/order-details/order-details.component';
 
 const routes: Routes = [
+
+  // http://localhost:4200/order/id
+  {path: 'order/:id', component:OrderDetailsComponent},
   // http://localhost:4200/category/id
   {path: 'category/:id', component:OrderItemsComponent},
   // http://localhost:4200/category
