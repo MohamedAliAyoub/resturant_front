@@ -12,7 +12,11 @@ export class OrderItemsComponent {
   orders: Order[] = [];
   constructor(private order: OrderServiceService ,  private route: ActivatedRoute) { }
   ngOnInit():void{
-    this.finishOrders();
+    this.route.paramMap.subscribe(
+      ()=>{
+        this.finishOrders()
+      }
+    )
   }
 
   finishOrders()
