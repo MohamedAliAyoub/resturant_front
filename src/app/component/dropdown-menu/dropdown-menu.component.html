@@ -1,3 +1,5 @@
 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-  <a *ngFor="let temp of categories" class="dropdown-item" routerLink="category/{{temp.id}}">{{temp.name}}</a>
+  <a *ngFor="let temp of categories" routerLinkActive="menu-active" class="dropdown-item" routerLink="category/{{temp.id}}">
+    <i class="{{temp.logo}}"></i>  {{temp.name}}
+  </a>
 </div>
