@@ -9,6 +9,7 @@ import {CategoryItemComponent} from './component/category-item/category-item.com
 import {RouterModule, Routes} from "@angular/router";
 import { DropdownMenuComponent } from './component/dropdown-menu/dropdown-menu.component';
 import { SearchOrderComponent } from './component/search-order/search-order.component';
+import { OrderDetailsComponent } from './component/order-details/order-details.component';
 
 const routes: Routes = [
   // http://localhost:4200/category/id
@@ -32,7 +33,8 @@ const routes: Routes = [
     OrderItemsComponent,
     CategoryItemComponent,
     DropdownMenuComponent,
-    SearchOrderComponent
+    SearchOrderComponent,
+    OrderDetailsComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
