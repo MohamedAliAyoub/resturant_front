@@ -22,9 +22,12 @@ export class OrderItemsComponent {
   finishOrders()
   {
     let result = this.route.snapshot.paramMap.has('id');
+    let searchResult = this.route.snapshot.paramMap.has('key');
     // alert(result);
     if (result)
       this.getOrderByCategoryId();
+    else if (searchResult)
+      this.getAllOrdersContainingKey();
     else
       this.getOrder()
   }
@@ -39,6 +42,15 @@ export class OrderItemsComponent {
   getOrderByCategoryId() {
     let categoryId = this.route.snapshot.paramMap.get('id');
     this.order.getOrdersByCategoryId(categoryId).subscribe(
+      data => {
+        this.orders = data;
+      }
+    )
+  }
+
+  getAllOrdersContainingKey() {
+    let valueOfSearch = this.route.snapshot.paramMap.get('key');
+    this.order.getOrdersByKey(valueOfSearch).subscribe(
       data => {
         this.orders = data;
       }

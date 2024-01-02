@@ -22,4 +22,11 @@ export class OrderServiceService {
       map(response => response),
     );
   }
+  getOrdersByKey(word:any): Observable<Order[]> {
+    return this.http.get<Order[]>(`${this.baseUrl}orderSearch?word=${word}`).pipe(
+      map(
+        response => response
+      )
+    )
+  }
 }
