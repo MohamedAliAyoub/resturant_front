@@ -10,6 +10,7 @@ import {RouterModule, Routes} from "@angular/router";
 import { DropdownMenuComponent } from './component/dropdown-menu/dropdown-menu.component';
 import { SearchOrderComponent } from './component/search-order/search-order.component';
 import { OrderDetailsComponent } from './component/order-details/order-details.component';
+import {NgbModule, NgbPagination} from '@ng-bootstrap/ng-bootstrap';
 
 const routes: Routes = [
 
@@ -38,13 +39,14 @@ const routes: Routes = [
     DropdownMenuComponent,
     SearchOrderComponent,
     OrderDetailsComponent,
-    // NgModule
   ],
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbPagination,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,15 +1,20 @@
-import { Component } from '@angular/core';
+import {Component, NgModule} from '@angular/core';
 import {Order} from "../../model/order";
 import {OrderServiceService} from "../../service/order-service.service";
 import {ActivatedRoute} from "@angular/router";
+
 
 @Component({
   selector: 'app-order-items',
   templateUrl: './order-items.component.html',
   styleUrls: ['./order-items.component.css']
 })
+
+
 export class OrderItemsComponent {
   orders: Order[] = [];
+  page: number = 1;
+
   constructor(private order: OrderServiceService ,  private route: ActivatedRoute) { }
   ngOnInit():void{
     this.route.paramMap.subscribe(
@@ -55,5 +60,9 @@ export class OrderItemsComponent {
         this.orders = data;
       }
     )
+  }
+
+  doing() {
+    alert(this.page)
   }
 }
