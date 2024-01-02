@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {OrderServiceService} from "../../service/order-service.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Order} from "../../model/order";
 
 @Component({
@@ -14,7 +14,8 @@ export class OrderDetailsComponent {
   order: Order = null;
 
   constructor(private orderService: OrderServiceService,
-              private route : ActivatedRoute) {
+              private route : ActivatedRoute,
+              private  router : Router) {
   }
 
   ngOnInit(): void {
@@ -27,5 +28,9 @@ export class OrderDetailsComponent {
         this.order = data;
       }
     );
+  }
+
+  allOrders() {
+    this.router.navigateByUrl('/orders')
   }
 }
