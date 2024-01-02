@@ -37,7 +37,8 @@ const routes: Routes = [
     CategoryItemComponent,
     DropdownMenuComponent,
     SearchOrderComponent,
-    OrderDetailsComponent
+    OrderDetailsComponent,
+    // NgModule
   ],
   imports: [
     RouterModule.forRoot(routes),
