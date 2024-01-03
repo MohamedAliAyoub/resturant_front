@@ -13,6 +13,7 @@ export class OrderServiceService {
   constructor(private http: HttpClient) { }
 
   getOrders(page: number, size: number): Observable<Order[]> {
+
     return this.http.get<Order[]>(`${this.baseUrl}allOrders?page=${page}&size=${size}`).pipe(
       map(response => response),
     );
@@ -33,6 +34,29 @@ export class OrderServiceService {
 
   getOrderById(id:any) : Observable<Order>{
     return this.http.get<Order>(`${this.baseUrl}order?id=${id}`).pipe(
+      map(
+        response => response
+      )
+    )
+  }
+
+  getOrdersLength() : Observable<number>{
+    return this.http.get<number>(`${this.baseUrl}orderSize`).pipe(
+      map(
+        response => response
+      )
+    )
+  }
+  getOrdersLengthByCategoryId(id:any) : Observable<number>{
+    return this.http.get<number>(`${this.baseUrl}categoryIdSize?id=${id}`).pipe(
+      map(
+        response => response
+      )
+    )
+  }
+
+  getOrdersLengthByKey(id:any) : Observable<number>{
+    return this.http.get<number>(`${this.baseUrl}keySize?id=${id}`).pipe(
       map(
         response => response
       )
