@@ -14,18 +14,21 @@ import {ActivatedRoute} from "@angular/router";
 export class OrderItemsComponent {
   orders: Order[] = [];
   page: number = 1;
+  pageLength: number = 5;
+  orderSize: number = 78;
 
-  constructor(private order: OrderServiceService ,  private route: ActivatedRoute) { }
-  ngOnInit():void{
+  constructor(private order: OrderServiceService, private route: ActivatedRoute) {
+  }
+
+  ngOnInit(): void {
     this.route.paramMap.subscribe(
-      ()=>{
+      () => {
         this.finishOrders()
       }
     )
   }
 
-  finishOrders()
-  {
+  finishOrders() {
     let result = this.route.snapshot.paramMap.has('id');
     let searchResult = this.route.snapshot.paramMap.has('key');
     // alert(result);
@@ -36,8 +39,9 @@ export class OrderItemsComponent {
     else
       this.getOrder()
   }
+
   getOrder() {
-    this.order.getOrders().subscribe(
+    this.order.getOrders(this.page - 1, this.pageLength).subscribe(
       data => {
         this.orders = data;
       }
@@ -46,7 +50,7 @@ export class OrderItemsComponent {
 
   getOrderByCategoryId() {
     let categoryId = this.route.snapshot.paramMap.get('id');
-    this.order.getOrdersByCategoryId(categoryId).subscribe(
+    this.order.getOrdersByCategoryId(categoryId, this.page - 1, this.pageLength).subscribe(
       data => {
         this.orders = data;
       }
@@ -55,7 +59,7 @@ export class OrderItemsComponent {
 
   getAllOrdersContainingKey() {
     let valueOfSearch = this.route.snapshot.paramMap.get('key');
-    this.order.getOrdersByKey(valueOfSearch).subscribe(
+    this.order.getOrdersByKey(valueOfSearch, this.page - 1, this.pageLength).subscribe(
       data => {
         this.orders = data;
       }
@@ -63,6 +67,7 @@ export class OrderItemsComponent {
   }
 
   doing() {
-    alert(this.page)
+    // alert(this.page)
+    this.finishOrders()
   }
 }

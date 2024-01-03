@@ -9,6 +9,7 @@ import {Order} from "../model/order";
 export class OrderServiceService {
 
   private baseUrl = 'http://localhost:8080/api/';
+
   constructor(private http: HttpClient) { }
 
   getOrders(page: number, size: number): Observable<Order[]> {
