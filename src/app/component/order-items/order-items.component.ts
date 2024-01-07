@@ -3,6 +3,7 @@ import {Order} from "../../model/order";
 import {OrderServiceService} from "../../service/order-service.service";
 import {ActivatedRoute} from "@angular/router";
 import {CartOrder} from "../../model/cart-order";
+import {CartServiceService} from "../../service/cart-service.service";
 
 
 @Component({
@@ -18,7 +19,9 @@ export class OrderItemsComponent {
   pageLength: number = 9;
   orderSize: number = 0;
 
-  constructor(private order: OrderServiceService, private route: ActivatedRoute) {
+  constructor(private order: OrderServiceService,
+              private route: ActivatedRoute,
+              private cartService:CartServiceService) {
   }
 
   ngOnInit(): void {
@@ -93,7 +96,8 @@ export class OrderItemsComponent {
 
   addToCard(temp: Order) {
     const cartOrder = new CartOrder(temp)
-    console.log(cartOrder)
+    this.cartService.addOrderToCart(cartOrder);
+    // console.log(cartOrder)
   }
 }
 
