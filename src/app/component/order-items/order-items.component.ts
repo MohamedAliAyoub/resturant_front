@@ -14,7 +14,7 @@ import {ActivatedRoute} from "@angular/router";
 export class OrderItemsComponent {
   orders: Order[] = [];
   page: number = 1;
-  pageLength: number = 5;
+  pageLength: number = 9;
   orderSize: number = 0;
 
   constructor(private order: OrderServiceService, private route: ActivatedRoute) {
@@ -46,6 +46,7 @@ export class OrderItemsComponent {
        this.orderSize = data;
      }
    )
+
     this.order.getOrders(this.page - 1, this.pageLength).subscribe(
       data => {
         this.orders = data;
@@ -57,6 +58,7 @@ export class OrderItemsComponent {
     let categoryId = this.route.snapshot.paramMap.get('id');
     this.order.getOrdersLengthByCategoryId(categoryId).subscribe(
       data=>{
+        alert(data);
         this.orderSize =data;
       }
     )
@@ -84,7 +86,7 @@ export class OrderItemsComponent {
   }
 
   doing() {
-    // alert(this.page)
+     // alert(this.page)
     this.finishOrders()
   }
 }

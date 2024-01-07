@@ -55,8 +55,8 @@ export class OrderServiceService {
     )
   }
 
-  getOrdersLengthByKey(id:any) : Observable<number>{
-    return this.http.get<number>(`${this.baseUrl}keySize?id=${id}`).pipe(
+  getOrdersLengthByKey(word:any) : Observable<number>{
+    return this.http.get<number>(`${this.baseUrl}keySize?id=${word}`).pipe(
       map(
         response => response
       )
