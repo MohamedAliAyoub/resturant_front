@@ -11,6 +11,7 @@ import { DropdownMenuComponent } from './component/dropdown-menu/dropdown-menu.c
 import { SearchOrderComponent } from './component/search-order/search-order.component';
 import { OrderDetailsComponent } from './component/order-details/order-details.component';
 import {NgbModule, NgbPagination} from '@ng-bootstrap/ng-bootstrap';
+import { CardStatusComponent } from './component/card-status/card-status.component';
 
 const routes: Routes = [
 
@@ -39,6 +40,7 @@ const routes: Routes = [
     DropdownMenuComponent,
     SearchOrderComponent,
     OrderDetailsComponent,
+    CardStatusComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),

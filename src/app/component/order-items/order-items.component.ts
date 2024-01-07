@@ -58,7 +58,6 @@ export class OrderItemsComponent {
     let categoryId = this.route.snapshot.paramMap.get('id');
     this.order.getOrdersLengthByCategoryId(categoryId).subscribe(
       data=>{
-        alert(data);
         this.orderSize =data;
       }
     )
