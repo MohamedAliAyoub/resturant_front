@@ -17,12 +17,14 @@ export class CartServiceService {
     let isExist: boolean = false;
     let existOrder :CartOrder ;
     if(this.orders.length > 0){
-      for(let temp of this.orders){
-        if(temp.id === order.id){
-          existOrder = temp;
-          break;
-        }
-      }
+      // for(let temp of this.orders){
+      //   if(temp.id === order.id){
+      //     existOrder = temp;
+      //     break;
+      //   }
+      // }
+      // @ts-ignore
+      existOrder = this.orders.find(temp => temp.id === order.id);
     }
     // @ts-ignore
     isExist = (existOrder != undefined); // true   false
