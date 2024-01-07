@@ -16,6 +16,8 @@ import { PurchasesComponent } from './component/purchases/purchases.component';
 
 const routes: Routes = [
 
+  // http://localhost:4200/purachases
+  {path: 'purchases', component:PurchasesComponent},
   // http://localhost:4200/order/id
   {path: 'order/:id', component:OrderDetailsComponent},
   // http://localhost:4200/category/id
