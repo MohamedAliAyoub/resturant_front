@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {CartServiceService} from "../../service/cart-service.service";
 
 @Component({
   selector: 'app-card-status',
@@ -7,4 +8,17 @@ import { Component } from '@angular/core';
 })
 export class CardStatusComponent {
 
+  orderSize: number = 0;
+  orderPrice: number = 0;
+
+  constructor(private cart: CartServiceService) { }
+
+  ngOnInit(): void {
+    this.getCartStatus()
+  }
+
+  getCartStatus(){
+    this.orderSize = this.cart.totalOrders;
+    this.orderPrice = this.cart.totalPrice;
+  }
 }
