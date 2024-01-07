@@ -12,6 +12,7 @@ import { SearchOrderComponent } from './component/search-order/search-order.comp
 import { OrderDetailsComponent } from './component/order-details/order-details.component';
 import {NgbModule, NgbPagination} from '@ng-bootstrap/ng-bootstrap';
 import { CardStatusComponent } from './component/card-status/card-status.component';
+import { PurchasesComponent } from './component/purchases/purchases.component';
 
 const routes: Routes = [
 
@@ -41,6 +42,7 @@ const routes: Routes = [
     SearchOrderComponent,
     OrderDetailsComponent,
     CardStatusComponent,
+    PurchasesComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),
