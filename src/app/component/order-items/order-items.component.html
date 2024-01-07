@@ -8,7 +8,7 @@
         <h1>{{temp.name}}</h1>
       </a>
       <p class="price">{{temp.price |currency : 'USD'}}</p>
-      <button class="btn btn-primary card-button">Add to Cart</button>
+      <button (click)="addToCard(temp)" class="btn btn-primary card-button">Add to Cart</button>
     </div>
   </div>
   <div class="col-md-9 pag" style="padding-left: 30%">

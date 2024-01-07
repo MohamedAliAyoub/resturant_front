@@ -88,4 +88,10 @@ export class OrderItemsComponent {
     this.pageLength = +(<HTMLInputElement>event.target).value
     this.finishOrders()
   }
+
+
+  addToCard(temp: Order) {
+
+  }
 }
+
