@@ -1,6 +1,6 @@
 import {Order} from "./order";
 
-export class CardOrder {
+export class CartOrder {
   id: number;
   name: string;
   img: string;
