@@ -2,6 +2,7 @@ import {Component, NgModule} from '@angular/core';
 import {Order} from "../../model/order";
 import {OrderServiceService} from "../../service/order-service.service";
 import {ActivatedRoute} from "@angular/router";
+import {CardOrder} from "../../model/card-order";
 
 
 @Component({
@@ -91,7 +92,8 @@ export class OrderItemsComponent {
 
 
   addToCard(temp: Order) {
-
+    const cartOrder = new CardOrder(temp)
+    console.log(cartOrder)
   }
 }
 
