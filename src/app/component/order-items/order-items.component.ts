@@ -85,8 +85,8 @@ export class OrderItemsComponent {
     )
   }
 
-  doing() {
-     // alert(this.page)
+  pageSize(event: Event) {
+    this.pageLength = +(<HTMLInputElement>event.target).value
     this.finishOrders()
   }
 }
