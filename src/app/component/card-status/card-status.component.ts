@@ -18,7 +18,16 @@ export class CardStatusComponent {
   }
 
   getCartStatus(){
-    this.orderSize = this.cart.totalOrders;
-    this.orderPrice = this.cart.totalPrice;
+    this.cart.totalOrders.subscribe(
+      data=>{
+        this.orderSize = data ;
+      }
+    )
+
+    this.cart.totalPrice.subscribe(
+      data=>{
+        this.orderPrice = data ;
+      }
+    )
   }
 }
