@@ -13,6 +13,7 @@ import { OrderDetailsComponent } from './component/order-details/order-details.c
 import {NgbModule, NgbPagination} from '@ng-bootstrap/ng-bootstrap';
 import { CardStatusComponent } from './component/card-status/card-status.component';
 import { PurchasesComponent } from './component/purchases/purchases.component';
+import { CheckOutComponent } from './component/check-out/check-out.component';
 
 const routes: Routes = [
 
@@ -45,6 +46,7 @@ const routes: Routes = [
     OrderDetailsComponent,
     CardStatusComponent,
     PurchasesComponent,
+    CheckOutComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),
