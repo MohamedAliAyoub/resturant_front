@@ -20,9 +20,15 @@ export class CheckOutComponent {
         phone : [''],
       }),
       formPerson : this.formChildGroup.group({
-        country : ['Egypt'],
-        state : ['Fayoum'],
-        zip : ['464'],
+        country : [''],
+        state : [''],
+        zipCode : [''],
+      }),
+
+      toPerson : this.formChildGroup.group({
+        country : [''],
+        state : [''],
+        zipCode : [''],
       })
     })
   }
