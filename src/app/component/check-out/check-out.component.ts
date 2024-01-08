@@ -18,6 +18,11 @@ export class CheckOutComponent {
         fullName : [''],
         email : [''],
         phone : [''],
+      }),
+      formPerson : this.formChildGroup.group({
+        country : ['Egypt'],
+        state : ['Fayoum'],
+        zip : ['464'],
       })
     })
   }
