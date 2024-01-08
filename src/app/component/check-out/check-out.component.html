@@ -1,5 +1,5 @@
-<div class="row" [formGroup]="checkoutParentGroup">
-  <div formGroupName="data" class="col-md-8 myorder data">
+<form (ngSubmit)="done()" class="row" [formGroup]="checkoutParentGroup">
+  <div  formGroupName="data" class="col-md-8 myorder data">
     <label class="myla">Your Data</label>
     <div class="input-group mb-3">
       <span class="input-group-text" >@</span>
@@ -16,7 +16,7 @@
       <input formControlName="phone" type="text" class="form-control"  aria-describedby="basic-addon3">
     </div>
 
-  </div>
+  </div >
 
 
   <div formGroupName="formPerson" class="col-md-8 myorder data">
@@ -47,7 +47,7 @@
   </div>
   <div class="col-md-8 myorder data">
     <div class="form-check form-switch">
-      <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
+      <input (change)="similarGroup($event)"  class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
       <label class="form-check-label smi" for="flexSwitchCheckChecked">Similar</label>
     </div>
 
@@ -77,9 +77,32 @@
     </div>
 
   </div>
-</div>
-<div class="check-out">
-  <div class="size">Total Order : </div>
-  <div class="totalprice">Total Price : </div>
-  <button type="button" class="btn btn-primary done">Check Out</button>
-</div>
+
+  <div formGroupName="creditCard" class="col-md-8 myorder data">
+    <label class="myla">Card Type:</label>
+    <div class="input-group mb-3">
+      <select formControlName="cardType" class="form-select">
+        <option value="1">Visa</option>
+        <option value="2">Card</option>
+      </select>
+      <label class="input-group-text myin" for="inputGroupSelect02">Type</label>
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" >Card Number</span>
+      <input formControlName="cardNumber" type="text" class="form-control" aria-describedby="basic-addon3">
+    </div>
+
+    <div class="input-group mb-3">
+      <label class="input-group-text myin" for="inputGroupSelect02">Code</label>
+      <input formControlName="code" type="text" class="form-control" aria-describedby="basic-addon3">
+
+    </div>
+
+  </div>
+  <div class="check-out">
+    <div class="size">Total Order : </div>
+    <div class="totalprice">Total Price : </div>
+    <button type="submit" class="btn btn-primary done">Check Out</button>
+  </div>
+</form>
+
