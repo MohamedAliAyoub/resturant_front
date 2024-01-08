@@ -53,4 +53,20 @@ export class CartServiceService {
     console.log("price" +this.totalPrice);
   }
 
+  removeOrder(order: CartOrder){
+    order.quantity--;
+    if(order.quantity === 0){
+      this.remove(order)
+    } else {
+      this.calculateTotals()
+    }
+  }
+  remove(order: CartOrder){
+    const index = this.orders.findIndex(temp => temp.id === order.id) // index or -1
+    if(index > -1){
+      this.orders.splice(index,1)
+      this.calculateTotals()
+    }
+  }
+
 }

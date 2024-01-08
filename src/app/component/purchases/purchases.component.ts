@@ -23,4 +23,13 @@ export class PurchasesComponent {
   addOrder(temp: CartOrder) {
     this.cart.addOrderToCart(temp);
   }
+
+  removeOrder(temp: CartOrder) {
+    console.log("test")
+    this.cart.removeOrder(temp);
+  }
+
+  remove(temp: CartOrder) {
+    this.cart.remove(temp);
+  }
 }
