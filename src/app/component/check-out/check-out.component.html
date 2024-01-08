@@ -1,19 +1,19 @@
 <div class="row" [formGroup]="checkoutParentGroup">
-  <div class="col-md-8 myorder data">
+  <div formGroupName="data" class="col-md-8 myorder data">
     <label class="myla">Your Data</label>
     <div class="input-group mb-3">
       <span class="input-group-text" >@</span>
-      <input type="text" class="form-control" placeholder="Full Name" aria-label="Username" aria-describedby="basic-addon1">
+      <input formControlName="fullName" type="text" class="form-control" placeholder="Full Name" aria-label="Username" aria-describedby="basic-addon1">
     </div>
 
     <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+      <input formControlName="email" type="email" class="form-control" placeholder="email" aria-label="Recipient's username" aria-describedby="basic-addon2">
       <span class="input-group-text" >@gmail.com</span>
     </div>
 
     <div class="input-group mb-3">
-      <span class="input-group-text">Phone Number</span>
-      <input type="text" class="form-control"  aria-describedby="basic-addon3">
+      <span  class="input-group-text">Phone Number</span>
+      <input formControlName="phone" type="text" class="form-control"  aria-describedby="basic-addon3">
     </div>
 
   </div>
