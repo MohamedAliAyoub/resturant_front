@@ -17,6 +17,9 @@ import { CheckOutComponent } from './component/check-out/check-out.component';
 
 const routes: Routes = [
 
+
+  // http://localhost:4200/check-out
+  {path: 'check-out', component:CheckOutComponent},
   // http://localhost:4200/purachases
   {path: 'purchases', component:PurchasesComponent},
   // http://localhost:4200/order/id
