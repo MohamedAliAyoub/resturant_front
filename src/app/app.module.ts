@@ -14,6 +14,7 @@ import {NgbModule, NgbPagination} from '@ng-bootstrap/ng-bootstrap';
 import { CardStatusComponent } from './component/card-status/card-status.component';
 import { PurchasesComponent } from './component/purchases/purchases.component';
 import { CheckOutComponent } from './component/check-out/check-out.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 const routes: Routes = [
 
@@ -57,6 +58,8 @@ const routes: Routes = [
     AppRoutingModule,
     HttpClientModule,
     NgbPagination,
+    FormsModule,
+    ReactiveFormsModule,
 
   ],
   providers: [],
