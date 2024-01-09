@@ -26,7 +26,7 @@ export class CheckOutComponent {
         fullName: new FormControl('',[
           Validators.required,
           Validators.minLength(6)]),
-        gmail: new FormControl('',[
+        email: new FormControl('',[
           Validators.required,
           Validators.pattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')
         ]),
@@ -56,6 +56,16 @@ export class CheckOutComponent {
     })
     this.getAllCountries()
     // this.getAllStates()
+  }
+
+  get fullName(){
+    return this.checkoutParentGroup.get('data.fullName')
+  }
+  get email(){
+    return this.checkoutParentGroup.get('data.email')
+  }
+  get phone(){
+    return this.checkoutParentGroup.get('data.phone')
   }
 
   done() {
