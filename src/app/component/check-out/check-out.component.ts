@@ -44,7 +44,7 @@ export class CheckOutComponent {
       }),
     })
     this.getAllCountries()
-    this.getAllStates()
+    // this.getAllStates()
   }
 
   done() {
@@ -76,10 +76,21 @@ export class CheckOutComponent {
     )
   }
 
-  getAllStates(){
-    this.stateCountry.getAllState().subscribe(
-      data=>{
-        this.states = data ;
+  // getAllStates(){
+  //   this.stateCountry.getAllState().subscribe(
+  //     data=>{
+  //       this.states = data ;
+  //     }
+  //   )
+  // }
+
+  getStatesByCode(){
+    // const code = this.checkoutParentGroup.get('fromPerson.country').value;
+    const  code = this.checkoutParentGroup.get('formPerson.country')?.value;
+    // alert(code)
+    this.stateCountry.getStateByCode(code).subscribe(
+      data =>{
+        this.states = data
       }
     )
   }
