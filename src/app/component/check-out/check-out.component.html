@@ -19,11 +19,13 @@
       <span class="input-group-text" >@gmail.com</span>
     </div>
 
-    <div class="alert alert-danger" role="alert">
-      Email is Required
-    </div>
-    <div class="alert alert-danger" role="alert">
-      Invalid Email
+    <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" >
+      <div *ngIf="email?.errors?.['required']" class="alert alert-danger" role="alert">
+        Email is Required
+      </div>
+      <div *ngIf="email?.errors?.['pattern']" class="alert alert-danger" role="alert">
+        Invalid Email
+      </div>
     </div>
 
     <div class="input-group mb-3">
