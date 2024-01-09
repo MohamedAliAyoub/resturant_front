@@ -13,7 +13,8 @@ export class CheckOutComponent {
 
   checkoutParentGroup!: FormGroup;
   countries: Country[] = [];
-  states: State[] = [];
+  statesFromPerson: State[] = [];
+  statesToPerson: State[] = [];
 
   constructor(private formChildGroup: FormBuilder,
               private stateCountry: StateCountryServiceService) {
@@ -26,7 +27,7 @@ export class CheckOutComponent {
         email: [''],
         phone: [''],
       }),
-      formPerson: this.formChildGroup.group({
+      fromPerson: this.formChildGroup.group({
         country: [''],
         state: [''],
         zipCode: [''],
@@ -51,7 +52,7 @@ export class CheckOutComponent {
     // @ts-ignore
     console.log(this.checkoutParentGroup.get('data').value)
     // @ts-ignore
-    console.log(this.checkoutParentGroup.get('formPerson').value)
+    console.log(this.checkoutParentGroup.get('fromPerson').value)
     // @ts-ignore
     console.log(this.checkoutParentGroup.get('toPerson').value)
     // @ts-ignore
@@ -62,7 +63,9 @@ export class CheckOutComponent {
   similarGroup(event: Event) {
     if ((<HTMLInputElement>event.target).checked) {
       this.checkoutParentGroup.controls['toPerson']
-        .setValue(this.checkoutParentGroup.controls['formPerson'].value)
+        .setValue(this.checkoutParentGroup.controls['fromPerson'].value)
+      this.statesToPerson = this.statesFromPerson
+
     } else {
       this.checkoutParentGroup.controls['toPerson'].reset()
     }
@@ -84,13 +87,16 @@ export class CheckOutComponent {
   //   )
   // }
 
-  getStatesByCode(){
-    // const code = this.checkoutParentGroup.get('fromPerson.country').value;
-    const  code = this.checkoutParentGroup.get('formPerson.country')?.value;
-    // alert(code)
+  getStatesByCode(typeForm : String){
+    const  code = this.checkoutParentGroup.get(`${typeForm}.country`)?.value;
     this.stateCountry.getStateByCode(code).subscribe(
       data =>{
-        this.states = data
+        if(typeForm === 'fromPerson'){
+          this.statesFromPerson = data
+        } else {
+          this.statesToPerson = data
+        }
+        this.checkoutParentGroup.get(`${typeForm}.state`)?.setValue(data[0])
       }
     )
   }
