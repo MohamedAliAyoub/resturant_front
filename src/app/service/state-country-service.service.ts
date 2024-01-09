@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {map, Observable, pipe} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {Country} from "../model/country";
+import {State} from "../model/state";
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,14 @@ export class StateCountryServiceService {
     return this.http.get<Country[]>(`${this.baseUrl}countries`).pipe(
       map(
         response => response
+      )
+    )
+  }
+
+  getAllState(): Observable<State[]>{
+    return this.http.get<State[]>(`${this.baseUrl}states`).pipe(
+      map(
+        response =>response
       )
     )
   }
