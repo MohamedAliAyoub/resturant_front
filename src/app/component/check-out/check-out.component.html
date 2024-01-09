@@ -23,17 +23,13 @@
     <label class="myla">To :</label>
     <div class="input-group mb-3">
       <select formControlName="country" class="form-select">
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
+        <option *ngFor="let temp of countries" value="{{temp.id}}">{{temp.name}}</option>
       </select>
       <label class="input-group-text myin" for="inputGroupSelect02">Country</label>
     </div>
     <div class="input-group mb-3">
       <select formControlName="state" class="form-select" >
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
+        <option *ngFor="let temp of states" value="{{temp.id}}">{{temp.name}}</option>
       </select>
       <label class="input-group-text myin" >State</label>
     </div>
@@ -54,17 +50,13 @@
     <label class="myla">To :</label>
     <div class="input-group mb-3">
       <select formControlName="country" class="form-select">
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
+        <option *ngFor="let temp of countries" value="{{temp.id}}">{{temp.name}}</option>
       </select>
       <label class="input-group-text myin" for="inputGroupSelect02">Country</label>
     </div>
     <div class="input-group mb-3">
       <select formControlName="state" class="form-select" >
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
+        <option *ngFor="let temp of states" value="{{temp.id}}">{{temp.name}}</option>
       </select>
       <label class="input-group-text myin" >State</label>
     </div>

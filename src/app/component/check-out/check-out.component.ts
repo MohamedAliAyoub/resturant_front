@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
+import {StateCountryServiceService} from "../../service/state-country-service.service";
+import {Country} from "../../model/country";
+import {State} from "../../model/state";
 
 @Component({
   selector: 'app-check-out',
@@ -9,33 +12,39 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 export class CheckOutComponent {
 
   checkoutParentGroup!: FormGroup;
-  constructor(private formChildGroup : FormBuilder) {
+  countries: Country[] = [];
+  states: State[] = [];
+
+  constructor(private formChildGroup: FormBuilder,
+              private stateCountry: StateCountryServiceService) {
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.checkoutParentGroup = this.formChildGroup.group({
-      data : this.formChildGroup.group({
-        fullName : [''],
-        email : [''],
-        phone : [''],
+      data: this.formChildGroup.group({
+        fullName: [''],
+        email: [''],
+        phone: [''],
       }),
-      formPerson : this.formChildGroup.group({
-        country : [''],
-        state : [''],
-        zipCode : [''],
+      formPerson: this.formChildGroup.group({
+        country: [''],
+        state: [''],
+        zipCode: [''],
       }),
 
-      toPerson : this.formChildGroup.group({
-        country : [''],
-        state : [''],
-        zipCode : [''],
+      toPerson: this.formChildGroup.group({
+        country: [''],
+        state: [''],
+        zipCode: [''],
       }),
-      creditCard : this.formChildGroup.group({
-        cardType : [''],
-        cardNumber : [''],
-        code : [''],
+      creditCard: this.formChildGroup.group({
+        cardType: [''],
+        cardNumber: [''],
+        code: [''],
       }),
     })
+    this.getAllCountries()
+    this.getAllStates()
   }
 
   done() {
@@ -51,11 +60,27 @@ export class CheckOutComponent {
 
 
   similarGroup(event: Event) {
-    if((<HTMLInputElement>event.target).checked){
+    if ((<HTMLInputElement>event.target).checked) {
       this.checkoutParentGroup.controls['toPerson']
         .setValue(this.checkoutParentGroup.controls['formPerson'].value)
     } else {
       this.checkoutParentGroup.controls['toPerson'].reset()
     }
+  }
+
+  getAllCountries() {
+    this.stateCountry.getAllCountry().subscribe(
+      data => {
+        this.countries = data
+      }
+    )
+  }
+
+  getAllStates(){
+    this.stateCountry.getAllState().subscribe(
+      data=>{
+        this.states = data ;
+      }
+    )
   }
 }
