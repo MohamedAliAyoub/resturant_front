@@ -4,6 +4,7 @@ import {StateCountryServiceService} from "../../service/state-country-service.se
 import {Country} from "../../model/country";
 import {State} from "../../model/state";
 import {SpaceValidator} from "../../model/space-validator";
+import {CartServiceService} from "../../service/cart-service.service";
 
 @Component({
   selector: 'app-check-out',
@@ -16,9 +17,12 @@ export class CheckOutComponent {
   countries: Country[] = [];
   statesFromPerson: State[] = [];
   statesToPerson: State[] = [];
+  totalSize: number = 0;
+  totalPrice: number= 0;
 
   constructor(private formChildGroup: FormBuilder,
-              private stateCountry: StateCountryServiceService) {
+              private stateCountry: StateCountryServiceService,
+              private card : CartServiceService) {
   }
 
   ngOnInit() {
@@ -57,6 +61,7 @@ export class CheckOutComponent {
       }),
     })
     this.getAllCountries()
+    this.getTotals()
     // this.getAllStates()
   }
 
@@ -123,6 +128,19 @@ export class CheckOutComponent {
           this.statesToPerson = data
         }
         this.checkoutParentGroup.get(`${typeForm}.state`)?.setValue(data[0])
+      }
+    )
+  }
+
+  getTotals(){
+    this.card.totalOrders.subscribe(
+      data => {
+        this.totalSize = data
+      }
+    )
+    this.card.totalPrice.subscribe(
+      data => {
+        this.totalPrice = data
       }
     )
   }
