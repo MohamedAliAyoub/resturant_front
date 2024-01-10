@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {StateCountryServiceService} from "../../service/state-country-service.service";
 import {Country} from "../../model/country";
 import {State} from "../../model/state";
+import {SpaceValidator} from "../../model/space-validator";
 
 @Component({
   selector: 'app-check-out',
@@ -25,6 +26,7 @@ export class CheckOutComponent {
       data: this.formChildGroup.group({
         fullName: new FormControl('',[
           Validators.required,
+          SpaceValidator.onlyContainSpace,
           Validators.minLength(6)]),
         email: new FormControl('',[
           Validators.required,
@@ -69,14 +71,18 @@ export class CheckOutComponent {
   }
 
   done() {
-    // @ts-ignore
-    console.log(this.checkoutParentGroup.get('data').value)
-    // @ts-ignore
-    console.log(this.checkoutParentGroup.get('fromPerson').value)
-    // @ts-ignore
-    console.log(this.checkoutParentGroup.get('toPerson').value)
-    // @ts-ignore
-    console.log(this.checkoutParentGroup.get('creditCard.code').value)
+    if (this.checkoutParentGroup.invalid) {
+      this.checkoutParentGroup.markAllAsTouched()
+    } else {
+      // @ts-ignore
+      console.log(this.checkoutParentGroup.get('data').value)
+      // @ts-ignore
+      console.log(this.checkoutParentGroup.get('fromPerson').value)
+      // @ts-ignore
+      console.log(this.checkoutParentGroup.get('toPerson').value)
+      // @ts-ignore
+      console.log(this.checkoutParentGroup.get('creditCard').value)
+    }
   }
 
 

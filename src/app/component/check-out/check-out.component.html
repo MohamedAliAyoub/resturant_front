@@ -6,13 +6,15 @@
       <input formControlName="fullName" type="text" class="form-control" placeholder="Full Name" aria-label="Username" aria-describedby="basic-addon1">
     </div>
 
-    <div *ngIf="fullName?.errors?.['required']" class="alert alert-danger" role="alert">
-      Full Name is required.
+    <div *ngIf="fullName?.invalid && (fullName?.dirty || fullName?.touched)">
+      <div *ngIf="fullName?.errors?.['required'] || fullName?.errors?.['noSpace']" class="alert alert-danger" role="alert">
+        Full Name is required.
+      </div>
+      <div *ngIf="fullName?.errors?.['minlength']" class="alert alert-danger" role="alert">
+        Full Name must be at least 6 characters long.
+      </div>
     </div>
 
-    <div *ngIf="fullName?.errors?.['minLength']" class="alert alert-danger" role="alert">
-      Full Name must be at least 6 characters long.
-    </div>
 
     <div class="input-group mb-3">
       <input formControlName="email" type="email" class="form-control" placeholder="email" aria-label="Recipient's username" aria-describedby="basic-addon2">
@@ -32,17 +34,19 @@
       <span  class="input-group-text">Phone Number</span>
       <input formControlName="phone" type="text" class="form-control"  aria-describedby="basic-addon3">
     </div>
-    <div class="alert alert-danger" role="alert">
-      Phone is Required
-    </div>
-    <div class="alert alert-danger" role="alert">
-      Phone must be not more than 11 digit
-    </div>
-    <div class="alert alert-danger" role="alert">
-      Phone must be not less than 11 digit
-    </div>
-    <div class="alert alert-danger" role="alert">
-      Invalid Phone
+    <div *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)">
+      <div *ngIf="phone?.errors?.['required']" class="alert alert-danger" role="alert">
+        Phone is Required
+      </div>
+      <div *ngIf="phone?.errors?.['maxlength']" class="alert alert-danger" role="alert">
+        Phone must be not more than 11 digit
+      </div>
+      <div *ngIf="phone?.errors?.['minlength']" class="alert alert-danger" role="alert">
+        Phone must be not less than 11 digit
+      </div>
+      <div *ngIf="phone?.errors?.['pattern']" class="alert alert-danger" role="alert">
+        Invalid Phone
+      </div>
     </div>
 
 
