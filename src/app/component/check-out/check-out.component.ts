@@ -5,6 +5,9 @@ import {Country} from "../../model/country";
 import {State} from "../../model/state";
 import {SpaceValidator} from "../../model/space-validator";
 import {CartServiceService} from "../../service/cart-service.service";
+import {Item} from "../../model/item";
+import {CartOrder} from "../../model/cart-order";
+import {RequestOrder} from "../../model/request-order";
 
 @Component({
   selector: 'app-check-out',
@@ -79,14 +82,21 @@ export class CheckOutComponent {
     if (this.checkoutParentGroup.invalid) {
       this.checkoutParentGroup.markAllAsTouched()
     } else {
-      // @ts-ignore
-      console.log(this.checkoutParentGroup.get('data').value)
-      // @ts-ignore
-      console.log(this.checkoutParentGroup.get('fromPerson').value)
-      // @ts-ignore
-      console.log(this.checkoutParentGroup.get('toPerson').value)
-      // @ts-ignore
-      console.log(this.checkoutParentGroup.get('creditCard').value)
+      /* #1 */
+      let client = this.checkoutParentGroup.controls['data'].value;
+      /* #2 */
+      let fromAddress =  this.checkoutParentGroup.controls['fromPerson'].value;
+      /* #3 */
+      let toAddress =  this.checkoutParentGroup.controls['toPerson'].value;
+      /* #4 */
+      let requestOrder = new RequestOrder( this.totalPrice , this.totalSize);
+
+      /* #5 */
+      let items: Item[] = [];
+      let orders: CartOrder[] = this.card.orders;
+      for (let i=0;i<orders.length;i++){
+        items[i] = new Item(orders[i]);
+      }
     }
   }
 

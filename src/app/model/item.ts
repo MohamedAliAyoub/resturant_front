@@ -1,11 +1,13 @@
+import {CartOrder} from "./cart-order";
+
 export class Item {
   img: string;
   quantity: number;
   price: number;
 
-  constructor(img: string, quantity: number, price: number) {
-    this.img = img;
-    this.quantity = quantity;
-    this.price = price;
+  constructor(order: CartOrder) {
+    this.img = order.img
+    this.quantity = order.quantity
+    this.price = order.price
   }
 }
