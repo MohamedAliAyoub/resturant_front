@@ -12,6 +12,7 @@ import {PurchaseServiceService} from "../../service/purchase-service.service";
 import {PurchaseRequest} from "../../model/purchase-request";
 import {Client} from "../../model/client";
 import {Address} from "../../model/address";
+import {Route, Router} from "@angular/router";
 
 @Component({
   selector: 'app-check-out',
@@ -30,8 +31,8 @@ export class CheckOutComponent {
   constructor(private formChildGroup: FormBuilder,
               private stateCountry: StateCountryServiceService,
               private card : CartServiceService,
-              private ps: PurchaseServiceService) {
-  }
+              private ps: PurchaseServiceService,
+              private router: Router){ }
 
   ngOnInit() {
     this.checkoutParentGroup = this.formChildGroup.group({
@@ -105,22 +106,17 @@ export class CheckOutComponent {
       let requestOrder = new RequestOrder( this.totalPrice , this.totalSize);
 
       /* #5 */
-      let items: Item[] = [];
+
       let orders: CartOrder[] = this.card.orders;
-      for (let i=0;i<orders.length;i++){
-        items[i] = new Item(orders[i]);
-      }
+      let items: Item[]  = orders.map(order => new Item(order));
 
       let purchaseRequest = new PurchaseRequest(client  , fromAddress , toAddress , requestOrder , items);
-      console.log("--------------------------")
-      console.log(purchaseRequest.client)
-      console.log(purchaseRequest.fromAddress)
-      console.log(purchaseRequest.toAddress)
-      console.log(purchaseRequest.requestOrder)
-      console.log(purchaseRequest.items)
+
       this.ps.getOrder(purchaseRequest).subscribe({
         next: response=> {
-          alert("OK")
+          alert("Your Name : " + response.name)
+          alert("Your Code : " + response.code)
+          this.clean()
         },
         error: error =>{
           console.log("Error is : " + error.message)
@@ -182,5 +178,13 @@ export class CheckOutComponent {
         this.totalPrice = data
       }
     )
+  }
+
+  private clean() {
+    this.card.orders = [];
+    this.card.totalOrders.next(0);
+    this.card.totalPrice.next(0);
+    this.checkoutParentGroup.reset();
+    this.router.navigateByUrl("/orders")
   }
 }
