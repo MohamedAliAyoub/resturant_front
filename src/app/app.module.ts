@@ -24,7 +24,7 @@ const routes: Routes = [
   // http://localhost:4200/login
   {path: 'login', component:LoginComponent},
   // http://localhost:4200/signup
-  {path: 'signup', component:LoginComponent},
+  {path: 'signup', component:SignupComponent},
   // http://localhost:4200/check-out
   {path: 'check-out', component:CheckOutComponent},
   // http://localhost:4200/purachases
