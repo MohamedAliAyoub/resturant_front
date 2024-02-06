@@ -24,7 +24,7 @@ export class SignupComponent {
     })
   }
 
-  login() {
+  signup() {
     alert(this.checkoutParentGroup.controls['user'].value.email)
     alert(this.checkoutParentGroup.controls['user'].value.password)
   }
