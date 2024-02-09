@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {map, Observable} from "rxjs";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {map, Observable, throwError} from "rxjs";
 import {Order} from "../model/order";
 
 @Injectable({
@@ -13,6 +13,14 @@ export class OrderServiceService {
   constructor(private http: HttpClient) { }
 
   getOrders(page: number, size: number): Observable<Order[]> {
+
+    const token = sessionStorage.getItem('token');
+    if (!token) {
+      // Handle the case where token doesn't exist
+      // For example, you can redirect the user to the login page or show an error message
+      console.error("Token not found in session storage");
+      return throwError("Token not found in session storage");
+    }
 
     return this.http.get<Order[]>(`${this.baseUrl}allOrders?page=${page}&size=${size}`).pipe(
       map(response => response),

@@ -15,6 +15,10 @@ export class AuthenticationServiceService {
     return this.http.post<any>(`${this.baseUrl}signin`,{email,password}).pipe(
       map(
         response => {
+          sessionStorage.setItem("email",response.email)
+          sessionStorage.setItem("token",`Bearer ${response.token}`)
+          // this.cook.set("email",response.email)
+          // this.cook.set("token",`Bearer ${response.token}`)
           return response;
         }
       )
@@ -24,10 +28,23 @@ export class AuthenticationServiceService {
   createUser(email: any, password: any):Observable<any>{
     return this.http.post<any>(`${this.baseUrl}signup`,{email,password}).pipe(
       map(
+
         response => {
+          sessionStorage.setItem("token",`Bearer ${response.token}`)
+          console.log(response);
           return response;
         }
       )
     )
+  }
+
+  getAuthentication(){
+    return sessionStorage.getItem("email");
+  }
+  // @ts-ignore
+  getToken(){
+    if(this.getAuthentication()){ //
+      return sessionStorage.getItem('token')
+    }
   }
 }

@@ -13,15 +13,33 @@
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-user"></i></span>
               </div>
-              <input formControlName="email" type="text" class="form-control" placeholder="email">
+              <input formControlName="email" type="text" class="form-control" placeholder="Email">
+                            <div *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+                              <div *ngIf="email?.errors?.['required']" class="alert alert-danger" role="alert">
+                                Email is required
+                              </div>
+                              <div *ngIf="email?.errors?.['email']" class="alert alert-danger" role="alert">
+                                Invalid email format
+                              </div>
+                            </div>
 
-          </div>
+            </div>
             <div class="input-group form-group">
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-key"></i></span>
               </div>
               <input formControlName="password" type="password" class="form-control" placeholder="password">
+
+              <input formControlName="password" type="password" class="form-control" placeholder="password">
+              <div *ngIf="checkoutParentGroup.get('user.password')?.invalid && (checkoutParentGroup.get('user.password')?.dirty || checkoutParentGroup.get('user.password')?.touched)">
+                <div *ngIf="checkoutParentGroup.get('user.password')?.errors?.['required'] || checkoutParentGroup.get('user.password')?.errors?.['noSpace']" class="alert alert-danger" role="alert">
+                  Password Is Required
+                </div>
+              </div>
+
+
             </div>
+
             <div class="form-group">
               <button type="submit" class="btn float-right login_btn">Sign Up</button>
             </div>
