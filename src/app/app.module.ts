@@ -20,6 +20,7 @@ import { SignupComponent } from './component/signup/signup.component';
 import {HttpIntercepterBaseAuthServiceService} from "./service/security/http-intercepter-base-auth-service.service";
 import {LoginActiveService} from "./service/activeted/login-active.service";
 import {RouteActivateService} from "./service/activeted/route-activate.service";
+import {CookieService} from "ngx-cookie-service";
 
 const routes: Routes = [
 
@@ -74,9 +75,25 @@ const routes: Routes = [
 
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS,useClass: HttpIntercepterBaseAuthServiceService,multi: true}
+    {provide: HTTP_INTERCEPTORS,useClass: HttpIntercepterBaseAuthServiceService,multi: true} ,
+    CookieService
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
+  constructor(private cook: CookieService) { }
+
+  ngOnInit(): void {
+    if (this.isCookie()){
+      sessionStorage.setItem("email",this.cook.get("email"))
+      sessionStorage.setItem("token",this.cook.get("token"))
+    }
+  }
+
+  isCookie(){
+    if (this.cook.get('email') === '' || this.cook.get('token') === ''){
+      return false;
+    }
+    return true;
+  }
 }
