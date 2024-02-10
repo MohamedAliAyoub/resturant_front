@@ -7,7 +7,8 @@ import {SpaceValidator} from "../../model/space-validator";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css' ,
+    '../../../assets/css/login-signup.css']
 })
 export class LoginComponent implements OnInit {
   checkoutParentGroup!: FormGroup;
