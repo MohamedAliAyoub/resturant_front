@@ -1,5 +1,5 @@
-<ul>
-  <li  routerLinkActive="active"><a routerLink="orders"><i class="bx bx-home"></i> <span>Home</span></a></li>
+<ul  *ngIf="isLogin()">
+  <li   routerLinkActive="active"><a routerLink="orders"><i class="bx bx-home"></i> <span>Home</span></a></li>
 
   <li *ngFor="let temp of categories" routerLinkActive="active" >
     <a routerLink="category/{{temp.id}}"><i class="{{temp.logo}}"></i> <span>{{temp.name}}</span></a>

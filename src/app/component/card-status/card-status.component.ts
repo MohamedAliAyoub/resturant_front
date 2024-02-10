@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {CartServiceService} from "../../service/cart-service.service";
+import {AuthenticationServiceService} from "../../service/security/authentication-service.service";
 
 @Component({
   selector: 'app-card-status',
@@ -11,7 +12,8 @@ export class CardStatusComponent {
   orderSize: number = 0;
   orderPrice: number = 0;
 
-  constructor(private cart: CartServiceService) { }
+  constructor(private cart: CartServiceService,
+  private auth: AuthenticationServiceService) { }
 
   ngOnInit(): void {
     this.getCartStatus()
@@ -29,5 +31,9 @@ export class CardStatusComponent {
         this.orderPrice = data ;
       }
     )
+  }
+
+  isUserLogin(){
+    return this.auth.isLogin()
   }
 }
