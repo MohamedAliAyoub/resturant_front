@@ -40,17 +40,27 @@ export class LoginComponent implements OnInit {
       this.checkoutParentGroup.markAllAsTouched()
       return;
     }
-    this.auth.executeAuthentication(
+    this.auth.userActive(
       this.checkoutParentGroup.controls['user'].value.email,
       this.checkoutParentGroup.controls['user'].value.password
     ).subscribe({
       next: response =>{
-        this.router.navigateByUrl("/orders")
-      },
-      error: er=> {
-        console.log(er)
-        alert("invalid email or password")
-
+        let ac = response.active;
+        if(ac == 1){
+          this.auth.executeAuthentication(
+            this.checkoutParentGroup.controls['user'].value.email,
+            this.checkoutParentGroup.controls['user'].value.password
+          ).subscribe({
+            next: response =>{
+              this.router.navigateByUrl("/orders")
+            }
+          })
+        } else if(ac === 0){
+          sessionStorage.setItem("emailActive",this.checkoutParentGroup.controls['user'].value.email)
+          this.router.navigateByUrl("/active")
+        } else {
+          alert("Invalid Email or Password")
+        }
       }
     })
   }

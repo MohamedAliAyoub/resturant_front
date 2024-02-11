@@ -60,4 +60,14 @@ export class AuthenticationServiceService {
     this.cook.delete('email');
     this.cook.delete('token');
   }
+
+  userActive(email: String, password: String): Observable<any>{
+    return this.http.post<any>(`${this.baseUrl}active`,{email,password}).pipe(
+      map(
+        response => {
+          return response;
+        }
+      )
+    )
+  }
 }

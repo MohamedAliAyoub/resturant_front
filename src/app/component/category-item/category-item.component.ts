@@ -1,8 +1,6 @@
 import {Component} from '@angular/core';
 import {CategoryServiceService} from "../../service/category-service.service";
 import {Category} from "../../model/category";
-import {AuthenticationServiceService} from "../../service/security/authentication-service.service";
-import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-category-item',
@@ -13,13 +11,10 @@ export class CategoryItemComponent {
 
   categories: Category[] = []
 
-  constructor(private categoryService: CategoryServiceService,
-              private auth: AuthenticationServiceService) {
+  constructor(private categoryService: CategoryServiceService) {
   }
 
-  ngOnInit()
-    :
-    void {
+  ngOnInit(): void {
     this.getAllCategories();
   }
 
@@ -29,9 +24,5 @@ export class CategoryItemComponent {
         this.categories = data;
       }
     )
-  }
-
-  isLogin(){
-    return this.auth.isLogin()
   }
 }

@@ -54,7 +54,12 @@ export class SignupComponent {
       this.checkoutParentGroup.controls['user'].value.password
     ).subscribe({
       next: response => {
-        this.router.navigateByUrl("/login")
+        if (response.result == 1){
+          sessionStorage.setItem("emailActive",this.checkoutParentGroup.controls['user'].value.email),
+            this.router.navigateByUrl("/active")
+        } else {
+          alert("Email is Exist")
+        }
       }
     })
   }
