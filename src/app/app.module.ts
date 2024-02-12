@@ -22,12 +22,13 @@ import {LoginActiveService} from "./service/activeted/login-active.service";
 import {RouteActivateService} from "./service/activeted/route-activate.service";
 import {CookieService} from "ngx-cookie-service";
 import { CodeActivationComponent } from './component/code-activation/code-activation.component';
+import {AccountServiceService} from "./service/activeted/account-service.service";
 
 const routes: Routes = [
 
 
   // http://localhost:4200/active
-  {path: 'active', component:CodeActivationComponent},
+  {path: 'active', component:CodeActivationComponent , canActivate: [LoginActiveService,AccountServiceService]},
   // http://localhost:4200/login
   {path: 'login', component:LoginComponent , canActivate:[LoginActiveService]},
   // http://localhost:4200/signup

@@ -70,4 +70,14 @@ export class AuthenticationServiceService {
       )
     )
   }
+
+  activeAccount(mail: any, code: any):Observable<any>{
+    return this.http.post<any>(`${this.baseUrl}activated`,{mail,code}).pipe(
+      map(
+        response => {
+          return response;
+        }
+      )
+    )
+  }
 }
