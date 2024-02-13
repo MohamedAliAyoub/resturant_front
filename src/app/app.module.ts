@@ -24,6 +24,12 @@ import {CookieService} from "ngx-cookie-service";
 import { CodeActivationComponent } from './component/code-activation/code-activation.component';
 import {AccountServiceService} from "./service/activeted/account-service.service";
 import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
+import {
+  FacebookLoginProvider,
+  GoogleLoginProvider,
+  SocialAuthServiceConfig,
+  SocialLoginModule
+} from "@abacritt/angularx-social-login";
 
 const routes: Routes = [
 
@@ -81,11 +87,30 @@ const routes: Routes = [
     NgbPagination,
     FormsModule,
     ReactiveFormsModule,
+    SocialLoginModule
 
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS,useClass: HttpIntercepterBaseAuthServiceService,multi: true} ,
-    CookieService
+    CookieService ,
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '998943596311-agii5b72rppsj1h1tdp5f75mhnfj22s7.apps.googleusercontent.com'
+            )
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('1640008832855470')
+          }
+        ]
+      } as SocialAuthServiceConfig,
+    },
   ],
   bootstrap: [AppComponent]
 })
