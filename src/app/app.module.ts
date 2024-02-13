@@ -23,10 +23,13 @@ import {RouteActivateService} from "./service/activeted/route-activate.service";
 import {CookieService} from "ngx-cookie-service";
 import { CodeActivationComponent } from './component/code-activation/code-activation.component';
 import {AccountServiceService} from "./service/activeted/account-service.service";
+import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
 
 const routes: Routes = [
 
 
+  // http://localhost:4200/reset
+  {path: 'reset', component:ResetPasswordComponent},
   // http://localhost:4200/active
   {path: 'active', component:CodeActivationComponent , canActivate: [LoginActiveService,AccountServiceService]},
   // http://localhost:4200/login
@@ -68,6 +71,7 @@ const routes: Routes = [
     LoginComponent,
     SignupComponent,
     CodeActivationComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),
