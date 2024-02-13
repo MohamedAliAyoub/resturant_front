@@ -80,4 +80,24 @@ export class AuthenticationServiceService {
       )
     )
   }
+
+  checkEmail(email: any):Observable<any>{
+    return this.http.post<any>(`${this.baseUrl}checkEmail`,{email}).pipe(
+      map(
+        response => {
+          return response;
+        }
+      )
+    )
+  }
+
+  resetPassword(email: any, code: any, password: any):Observable<any>{
+    return this.http.post<any>(`${this.baseUrl}resetPassword`,{email,code,password}).pipe(
+      map(
+        response => {
+          return response;
+        }
+      )
+    )
+  }
 }
